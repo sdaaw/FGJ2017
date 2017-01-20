@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Player m_player;
-    public PlayerState playerState;
     public Stats stats;
 
     public float chillSpeed;
@@ -26,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate ()
     {
-        switch(playerState)
+        switch(m_player.currentState)
         {
             case PlayerState.Normal:
                 Chill();
