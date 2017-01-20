@@ -4,15 +4,86 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    PlayerState playerState;
+    private Player m_player;
+    public PlayerState playerState;
+    public Stats stats;
+
+    public float chillSpeed;
+    public float chaseSpeed;
+
+    public bool waiting;
+    public bool moving;
+
+    private Rigidbody m_rb;
 
 	private void Awake ()
     {
-		
-	}
+        stats = GetComponent<Stats>();
+        time = Random.Range(1, 3);
+        m_player = FindObjectOfType<Player>();
+        m_rb = GetComponent<Rigidbody>();
+    }
 
     private void FixedUpdate ()
     {
-        	
+        switch(playerState)
+        {
+            case PlayerState.Normal:
+                Chill();
+                break;
+            case PlayerState.Sad:
+                Chase();
+                break;
+        }
 	}
+
+    float timer = 0;
+    float time = 0;
+
+    private void Chill()
+    {
+        if(!moving && !waiting)
+        {
+            transform.Rotate(transform.rotation.x, Random.Range(0, 360), transform.rotation.z);
+        }
+        if (timer < time && !waiting)
+        {
+            moving = true;
+            transform.Translate(-transform.forward * chillSpeed * Time.deltaTime);
+        }
+        else if(timer >= time)
+        {
+            moving = false;
+            StartCoroutine(AIDelay(Random.Range(1, 5)));
+            timer = 0;
+            time = Random.Range(1, 3);
+        }
+
+        timer += Time.deltaTime;
+    }
+
+    IEnumerator AIDelay(float delay)
+    {
+        waiting = true;
+        yield return new WaitForSeconds(delay);
+        waiting = false;
+    }
+
+    Vector3 playerChaseLookat;
+
+    private void Chase()
+    {
+        playerChaseLookat = new Vector3(m_player.transform.position.x,
+                                       transform.position.y,
+                                       m_player.transform.position.z);
+
+        transform.LookAt(playerChaseLookat);
+        transform.Translate(-transform.forward * chaseSpeed * Time.deltaTime);
+    }
+
+    private enum EnemyStates
+    {
+        Chill,
+        Chase,          
+    };
 }

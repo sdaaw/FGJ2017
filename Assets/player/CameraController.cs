@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     public float xSpeed;
     public float ySpeed;
 
+    public float minY, maxY;
+
     private Vector3 m_angles;
 
     public float distanceMin, distanceMax;
@@ -49,10 +51,12 @@ public class CameraController : MonoBehaviour
 
         Quaternion rotation = Quaternion.Euler(m_y, m_x, 0);
 
+        m_y = ClampAngle(m_y, minY, maxY);
+
         m_transform.rotation = rotation;
 
         distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
-        Vector3 desiredPos = rotation * new Vector3(0, 0, -distance) + playerTransform.position;
+        Vector3 desiredPos = rotation * new Vector3(0, 3, -distance) + playerTransform.position;
         // Smooth y axis to slowly follow player.
         float smoothY = Mathf.SmoothDamp(m_transform.position.y, desiredPos.y, ref velocity.y, followSpeed);
         m_transform.position = new Vector3(desiredPos.x, smoothY, desiredPos.z);
@@ -66,5 +70,22 @@ public class CameraController : MonoBehaviour
             m_transform.position = hit.point - (m_transform.position - hit.point).normalized * 1.2f;
         }
 
+    }
+
+    /// <summary>
+	/// Clamps the angle according to min/max values.
+	/// </summary>
+	/// <returns>The angle.</returns>
+	/// <param name="angle">Angle.</param>
+	/// <param name="min">Minimum.</param>
+	/// <param name="max">Max.</param>
+	public static float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360)
+            angle += 360;
+        if (angle > 360)
+            angle -= 360;
+
+        return Mathf.Clamp(angle, min, max);
     }
 }

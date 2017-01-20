@@ -10,8 +10,12 @@ public class Stats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        if (Health <= 0)
+        if (Health <= 0 && isAlive)
+        {
+            isAlive = false;
             Die();
+        }
+            
     }
 
     public void Die()

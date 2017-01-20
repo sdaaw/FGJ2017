@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 
     void DoMeleeSwing()
     {
-        if(!isPerformingAction && currentState == PlayerState.Insane)
+        if(!isPerformingAction && currentState == PlayerState.Sad)
         {
             StartCoroutine(MeleeTimer(meleeTime));
         }
@@ -54,5 +54,5 @@ public enum PlayerState
 {
     Happy,
     Normal,
-    Insane
+    Sad
 };
