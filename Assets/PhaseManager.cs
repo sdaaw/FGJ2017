@@ -32,6 +32,7 @@ public class PhaseManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         initCamPos = cam.transform.position;
         sadParticle.Stop();
+        player.currentState = PlayerState.Normal;
 
     }
 
@@ -41,11 +42,11 @@ public class PhaseManager : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-            if (player.currentState == PlayerState.Normal)
+            /*if (player.currentState == PlayerState.Normal)
                 player.currentState = PlayerState.Sad;
-            else
+            else if(player.currentState == PlayerState.Sad)
                 player.currentState = PlayerState.Normal;
-
+            */
             StartCoroutine("stateTransition", 2f);
         }
 
@@ -86,15 +87,16 @@ public class PhaseManager : MonoBehaviour
         shifting = true;
         //dirLight.intensity++;
         yield return new WaitForSeconds(transitionTime);
-        shifting = false;
-        //sadState = newSadState;
-        if(player.currentState == PlayerState.Normal)
+        if (player.currentState == PlayerState.Normal)
         {
             player.currentState = PlayerState.Sad;
-        } else
+        }
+        else
         {
             player.currentState = PlayerState.Normal;
         }
+        shifting = false;
+        //sadState = newSadState;
     }
 
     void ShakeCamera()
