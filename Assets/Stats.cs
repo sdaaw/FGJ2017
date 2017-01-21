@@ -9,6 +9,9 @@ public class Stats : MonoBehaviour
     public int scoreToAdd;
 
     public GameObject blood;
+    public Camera cam;
+
+    public float shakeValue;
 
     public int bloodParticleAmount = 35;
 
@@ -33,7 +36,6 @@ public class Stats : MonoBehaviour
             Rigidbody aR = a.GetComponent<Rigidbody>();
             aR.AddForce(Vector3.forward * 100);
         }
-
         StartCoroutine(invicibleTimer());
     }
 
@@ -44,7 +46,6 @@ public class Stats : MonoBehaviour
         GameManager.AddScore(scoreToAdd);
         GetComponent<Renderer>().material.color = Color.gray;
         isAlive = false;
-
         if(GetComponent<Enemy>())
         {
             GetComponent<Enemy>().model.SetActive(false);
@@ -61,7 +62,6 @@ public class Stats : MonoBehaviour
 
     private void Awake()
     {
-
     }
 
     private void FixedUpdate()

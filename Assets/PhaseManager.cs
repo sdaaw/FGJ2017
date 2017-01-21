@@ -40,14 +40,14 @@ public class PhaseManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.F))
+        //if (Input.GetKeyUp(KeyCode.F)) //remove this ok?
         {
             /*if (player.currentState == PlayerState.Normal)
                 player.currentState = PlayerState.Sad;
             else if(player.currentState == PlayerState.Sad)
                 player.currentState = PlayerState.Normal;
             */
-            StartCoroutine("stateTransition", 2f);
+            //StartCoroutine("stateTransition", 2f);
         }
 
         if (shifting)
@@ -79,6 +79,11 @@ public class PhaseManager : MonoBehaviour
             cam.clearFlags = CameraClearFlags.Skybox;
         }
 
+    }
+
+    public void Shift()
+    {
+        StartCoroutine("stateTransition", 2f);
     }
 
 
