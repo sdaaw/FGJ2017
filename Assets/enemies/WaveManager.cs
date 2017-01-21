@@ -58,7 +58,6 @@ public class WaveManager : MonoBehaviour {
                 timerText.text = "O BOI NICE MEDS";
                 waveText.text = "Wave: " + currWave.ToString();
                 player.UpdateBgSound();
-                //GetComponent<PhaseManager>().Shift();
             }
             if(player.currentState == PlayerState.Sad)
             {
@@ -96,9 +95,14 @@ public class WaveManager : MonoBehaviour {
 
     void SpawnEnemy()
     {
-        for(int i = 0; i < waveEnemyCount; i++)
+        for (int i = 0; i < waveEnemyCount; i++)
         {
-            GameObject.Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
+            Vector3 offsetPos = new Vector3(spawnPoints[Random.Range(0, spawnPoints.Count)].position.x + Random.Range(-10, 10),
+                spawnPoints[Random.Range(0, spawnPoints.Count)].position.y,
+                spawnPoints[Random.Range(0, spawnPoints.Count)].position.z + Random.Range(-10, 10));
+
+
+            GameObject.Instantiate(enemyPrefab, offsetPos, Quaternion.identity);
             FindObjectOfType<GameManager>().UpdateEnemyText();
         }
     }
@@ -120,8 +124,8 @@ public class WaveManager : MonoBehaviour {
             player.UpdateBgSound();
             currWave = currWave + 1;
             isOnWave = true;
-            waveTimeCap += 10;
-            waveEnemyCount += waveEnemyCount / 4;
+            waveTimeCap += 5;
+            waveEnemyCount += 3;
             SpawnEnemy();
         }
         //GetComponent<PhaseManager>().Shift();
