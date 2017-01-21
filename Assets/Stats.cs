@@ -19,6 +19,8 @@ public class Stats : MonoBehaviour
     public bool isInvincible;
     public float invTime;
 
+    public GameObject blöd;
+
     public void TakeDamage(int damage)
     {
         if (!isInvincible && isAlive)
@@ -53,8 +55,19 @@ public class Stats : MonoBehaviour
         GameManager.AddScore(scoreToAdd, (int)GameManager.gameManager.killCount);
         GetComponent<Renderer>().material.color = Color.gray;
         isAlive = false;
+
         if(GetComponent<Enemy>())
         {
+            //DecalPainter dp = FindObjectOfType<DecalPainter>();
+            //dp.Paint(transform.position -transform.up, Color.red, 1, 1);
+
+            Quaternion rRot = new Quaternion();
+            rRot = Quaternion.Euler(-90, blöd.transform.rotation.y, Random.Range(0, 360));
+
+            GameObject g = GameObject.Instantiate(blöd, transform.position - transform.up * 0.9f, rRot) as GameObject;
+            g.transform.localScale = new Vector3(Random.Range(2f, 4f), Random.Range(2f, 4f), 1);
+
+
             GetComponent<Enemy>().model.SetActive(false);
             //GetComponent<Enemy>().ragdoll.SetActive(true);
             GameObject.Instantiate(GetComponent<Enemy>().ragdoll, transform.position, transform.rotation);
