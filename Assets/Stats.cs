@@ -10,11 +10,16 @@ public class Stats : MonoBehaviour
 
     public GameObject blood;
 
-    public int bloodParticleAmount = 100;
+    public int bloodParticleAmount = 35;
+
+    public bool isInvincible;
+    public float invTime;
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("VITTU OSU");
+        if (isInvincible)
+            return;
+
         Health -= damage;
         if (Health <= 0 && isAlive)
         {
@@ -24,12 +29,12 @@ public class Stats : MonoBehaviour
 
         for(int i = 0; i < bloodParticleAmount; i++)
         {
-            Debug.Log("asd");
             GameObject a = Instantiate(blood, new Vector3(transform.position.x, transform.position.y, gameObject.transform.position.z), Quaternion.identity);
             Rigidbody aR = a.GetComponent<Rigidbody>();
             aR.AddForce(Vector3.forward * 100);
         }
-            
+
+        StartCoroutine(invicibleTimer());
     }
 
     public void Die()
@@ -37,7 +42,21 @@ public class Stats : MonoBehaviour
         //play death anim and wait
         //dragdol
         GameManager.AddScore(scoreToAdd);
-        Destroy(gameObject);
+        GetComponent<Renderer>().material.color = Color.gray;
+        isAlive = false;
+
+        if(GetComponent<Enemy>())
+        {
+            GetComponent<Enemy>().model.SetActive(false);
+            //GetComponent<Enemy>().ragdoll.SetActive(true);
+            GameObject.Instantiate(GetComponent<Enemy>().ragdoll, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+        else if(GetComponent<Player>())
+        {
+
+        }
+        //Destroy(gameObject);
     }
 
     private void Awake()
@@ -48,5 +67,12 @@ public class Stats : MonoBehaviour
     private void FixedUpdate()
     {
 
+    }
+
+    IEnumerator invicibleTimer()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invTime);
+        isInvincible = false;
     }
 }
