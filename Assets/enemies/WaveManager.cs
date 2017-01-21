@@ -8,6 +8,7 @@ public class WaveManager : MonoBehaviour {
 
     public int currWave;
     public bool isOnWave;
+    public int waveEnemyCount = 3;
 
     private float waveTimer;
     public float waveTimeCap;
@@ -42,8 +43,6 @@ public class WaveManager : MonoBehaviour {
         sinCurve = FindObjectOfType<SinTest>();
         isOnWave = true;
         currWave = 1;
-
-
     }
 	
 	// Update is called once per frame
@@ -63,18 +62,12 @@ public class WaveManager : MonoBehaviour {
             }
             if(player.currentState == PlayerState.Sad)
             {
-                spawnTimer += Time.deltaTime;
-                if (spawnTimer >= spawnTime)
-                {
-                    spawnTimer = 0;
-                    SpawnEnemy();
-                }
 
                 sinCurve.howSadAreYou = 2f;
                 sinCurve.speed = 20f;
                 waveTimer += 1 * Time.deltaTime;
                 if(!lastWave)
-                    timerText.text = Mathf.RoundToInt(waveTimer).ToString();
+                    timerText.text = "Time: " + Mathf.RoundToInt(waveTimer).ToString() + "/" + waveTimeCap;
                 else
                     waveText.text = "Final rampage: " + (int)waveTimer + "/" + waveTimeCap;
 
@@ -103,8 +96,11 @@ public class WaveManager : MonoBehaviour {
 
     void SpawnEnemy()
     {
-        GameObject.Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
-        FindObjectOfType<GameManager>().UpdateEnemyText();
+        for(int i = 0; i < waveEnemyCount; i++)
+        {
+            GameObject.Instantiate(enemyPrefab, spawnPoints[Random.Range(0, spawnPoints.Count)].position, Quaternion.identity);
+            FindObjectOfType<GameManager>().UpdateEnemyText();
+        }
     }
 
     void NextWave()
@@ -119,11 +115,14 @@ public class WaveManager : MonoBehaviour {
         }
         else
         {
+            waveTimer = 0;
             player.currentState = PlayerState.Normal;
             player.UpdateBgSound();
             currWave = currWave + 1;
             isOnWave = true;
-            waveTimeCap += 5;
+            waveTimeCap += 10;
+            waveEnemyCount += waveEnemyCount / 4;
+            SpawnEnemy();
         }
         //GetComponent<PhaseManager>().Shift();
     }
