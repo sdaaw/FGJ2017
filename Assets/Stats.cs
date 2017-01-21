@@ -64,7 +64,7 @@ public class Stats : MonoBehaviour
             Quaternion rRot = new Quaternion();
             rRot = Quaternion.Euler(-90, blöd.transform.rotation.y, Random.Range(0, 360));
 
-            GameObject g = GameObject.Instantiate(blöd, transform.position - transform.up * 0.9f, rRot) as GameObject;
+            GameObject g = GameObject.Instantiate(blöd, transform.position - transform.up * 0.97f, rRot) as GameObject;
             g.transform.localScale = new Vector3(Random.Range(2f, 4f), Random.Range(2f, 4f), 1);
 
 
