@@ -38,6 +38,7 @@ public class Stats : MonoBehaviour
             {
                 GameObject a = Instantiate(blood, new Vector3(transform.position.x, transform.position.y, gameObject.transform.position.z), Quaternion.identity);
                 Rigidbody aR = a.GetComponent<Rigidbody>();
+                a.GetComponent<destroyTimer>().time = Random.Range(15, 40);
                 aR.AddForce(Vector3.forward * 100);
             }
             SoundManager.PlayASource("blood");

@@ -47,14 +47,14 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
             DoMeleeSwing();
         /*else if(Input.GetKeyDown(KeyCode.Mouse0))
             DoMeleeSwing2();*/
 
-        if (Input.GetKeyDown(KeyCode.E) && currentDraggedEnemy == null)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && currentDraggedEnemy == null)
             DragEnemy();
-        else if (Input.GetKeyDown(KeyCode.E) && currentDraggedEnemy != null)
+        else if (Input.GetKeyDown(KeyCode.Mouse1) && currentDraggedEnemy != null)
             DropEnemy();
 
         if(currentDraggedEnemy != null)
@@ -68,7 +68,6 @@ public class Player : MonoBehaviour
         if (!isPerformingAction && currentState == PlayerState.Sad)
         {
             anim.SetTrigger("melee1");
-            SoundManager.PlayASource("attack");
             StartCoroutine(MeleeTimer(meleeTime));
         }
     }

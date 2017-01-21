@@ -98,6 +98,11 @@ public class Enemy : MonoBehaviour
         }
 
         timer += Time.deltaTime;
+
+        if(transform.position.y < 8)
+        {
+            stats.Die();
+        }
     }
 
     IEnumerator AIDelay(float delay)
@@ -111,6 +116,7 @@ public class Enemy : MonoBehaviour
 
     private void Chase()
     {
+        m_rb.AddForce(Vector3.down * 50);
         playerChaseLookat = new Vector3(m_player.transform.position.x,
                                        transform.position.y,
                                        m_player.transform.position.z);
@@ -120,7 +126,7 @@ public class Enemy : MonoBehaviour
         Vector3 dir = (playerChaseLookat - transform.position).normalized * chaseSpeed;
         m_rb.velocity = dir;
 
-        if(Vector3.Distance(transform.position, m_player.transform.position) < 2)
+        if (Vector3.Distance(transform.position, m_player.transform.position) < 2)
         {
             //do melee stuff
             Attack();
@@ -128,7 +134,6 @@ public class Enemy : MonoBehaviour
 
         if (m_swingTimer >= swingTime + 2)
             m_swingTimer = 0;
-        m_swingTimer += Time.deltaTime;
     }
 
     void Attack()
