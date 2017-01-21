@@ -23,13 +23,18 @@ public class Player : MonoBehaviour
 
     public List<ragdoll> ragdollsNear;
 
+    public Animator anim;
+
+    private Rigidbody m_rb;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
         stats = GetComponent<Stats>();
         weapon = GetComponentInChildren<weapon>();
         cA = GetComponentInChildren<CarryTrigger>();
-        weapon.owner = this;
+        anim = transform.GetChild(0).GetComponent<Animator>();
+        m_rb = GetComponent<Rigidbody>();
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -38,6 +43,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
             DoMeleeSwing();
+        else if(Input.GetKeyDown(KeyCode.Mouse0))
+            DoMeleeSwing2();
 
         if (Input.GetKeyDown(KeyCode.E) && currentDraggedEnemy == null)
             DragEnemy();
@@ -46,12 +53,24 @@ public class Player : MonoBehaviour
 
         if(currentDraggedEnemy != null)
             currentDraggedEnemy.transform.position = cA.transform.position;
+
+        anim.SetFloat("speed", m_rb.velocity.sqrMagnitude);
     }
 
     void DoMeleeSwing()
     {
         if (!isPerformingAction && currentState == PlayerState.Sad)
         {
+            anim.SetTrigger("melee1");
+            StartCoroutine(MeleeTimer(meleeTime));
+        }
+    }
+
+    void DoMeleeSwing2()
+    {
+        if (!isPerformingAction && currentState == PlayerState.Sad)
+        {
+            anim.SetTrigger("melee2");
             StartCoroutine(MeleeTimer(meleeTime));
         }
     }
