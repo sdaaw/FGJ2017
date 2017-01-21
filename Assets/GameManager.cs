@@ -1,16 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour 
+{
+    public Text scoreText;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public static int Score;
+
+    public static void AddScore(int scoreToAdd)
+    {
+        Score += scoreToAdd;
+        FindObjectOfType<GameManager>().UpdateScoreText();
+    }
+
+    private void Awake()
+    {
+        scoreText.text = "Score: 0 :^(";
+    }
+
+    public void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + Score + "!!";
+    }
 }

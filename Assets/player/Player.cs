@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
         stats = GetComponent<Stats>();
         weapon = GetComponentInChildren<weapon>();
         weapon.owner = this;
+
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	private void FixedUpdate ()
