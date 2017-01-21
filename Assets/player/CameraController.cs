@@ -58,7 +58,7 @@ public class CameraController : MonoBehaviour
         m_transform.rotation = rotation;
 
         distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel") * 5, distanceMin, distanceMax);
-        Vector3 desiredPos = rotation * new Vector3(0, 3, -distance) + playerTransform.position;
+        Vector3 desiredPos = rotation * new Vector3(1, 1.5f, -distance) + playerTransform.position;
         // Smooth y axis to slowly follow player.
         float smoothY = Mathf.SmoothDamp(m_transform.position.y, desiredPos.y, ref velocity.y, followSpeed);
         m_transform.position = new Vector3(desiredPos.x, smoothY, desiredPos.z);

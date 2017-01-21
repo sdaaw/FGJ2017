@@ -37,6 +37,7 @@ public class DragArea : MonoBehaviour
             if (p.ragdollsNear.Contains(r))
                 p.ragdollsNear.Remove(r);
             if (p.currentDraggedEnemy == r)
+
                 p.currentDraggedEnemy = null;
             Destroy(col.transform.root.gameObject);
         }

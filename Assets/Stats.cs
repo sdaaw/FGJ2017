@@ -20,7 +20,7 @@ public class Stats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isInvincible)
+        if (isInvincible || !isAlive)
             return;
 
         Health -= damage;
