@@ -43,7 +43,7 @@ public class Stats : MonoBehaviour
     {
         //play death anim and wait
         //dragdol
-        GameManager.AddScore(scoreToAdd);
+        GameManager.AddScore(scoreToAdd, (int)GameManager.gameManager.killCount);
         GetComponent<Renderer>().material.color = Color.gray;
         isAlive = false;
         if(GetComponent<Enemy>())
@@ -51,11 +51,15 @@ public class Stats : MonoBehaviour
             GetComponent<Enemy>().model.SetActive(false);
             //GetComponent<Enemy>().ragdoll.SetActive(true);
             GameObject.Instantiate(GetComponent<Enemy>().ragdoll, transform.position, transform.rotation);
+            FindObjectOfType<GameManager>().RefreshMassacre();
             Destroy(gameObject);
         }
         else if(GetComponent<Player>())
         {
-
+            Player p = GetComponent<Player>();
+            p.gameObject.SetActive(false);
+            FindObjectOfType<CameraController>().enabled = false;
+            GameManager.gameManager.EndGame();
         }
         //Destroy(gameObject);
     }

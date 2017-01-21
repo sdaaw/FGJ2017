@@ -18,7 +18,7 @@ public class DragArea : MonoBehaviour
 
         if (r != null && !r.isBeingDragged)
         {
-            GameManager.AddScore(score);
+            GameManager.AddScore(score, (int)GameManager.gameManager.killCount);
             if (p.ragdollsNear.Contains(r))
                 p.ragdollsNear.Remove(r);
             if (p.currentDraggedEnemy == r)
@@ -33,7 +33,7 @@ public class DragArea : MonoBehaviour
 
         if (r != null && !r.isBeingDragged)
         {
-            GameManager.AddScore(score);
+            GameManager.AddScore(score, (int)GameManager.gameManager.killCount);
             if (p.ragdollsNear.Contains(r))
                 p.ragdollsNear.Remove(r);
             if (p.currentDraggedEnemy == r)

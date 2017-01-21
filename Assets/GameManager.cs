@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour 
 {
+    public static GameManager gameManager;
+
     public Text scoreText;
     public Text enemyAmount;
     public Text toggleText;
     public Text insanityText;
+    public Text massacreText;
 
     private float timerTime = 0;
 
@@ -29,18 +32,23 @@ public class GameManager : MonoBehaviour
 
     public SinTest sinCurve;
 
+    public float massacreTime;
+    private float massacreTimer;
+    public float killCount;
+
+    public GameObject endScreen;
+
     void Start()
     {
         player = FindObjectOfType<Player>();
         sinCurve = FindObjectOfType<SinTest>();
+        gameManager = this;
     }
 
-    public static void AddScore(int scoreToAdd)
+    public static void AddScore(int scoreToAdd, int multiplier)
     { 
-        Score += scoreToAdd;
+        Score += scoreToAdd * (multiplier==0 ? 1 : multiplier);
         FindObjectOfType<GameManager>().UpdateScoreText();
-
-
     }
 
     void Update()
@@ -80,6 +88,19 @@ public class GameManager : MonoBehaviour
             insanityText.text = Mathf.RoundToInt(timerTime).ToString();
         }
 
+        if(massacreTimer > 0)
+        {
+            massacreTimer -= Time.deltaTime;
+            
+        }
+
+        if (massacreTimer < 0)
+        {
+            massacreTimer = 0;
+            killCount = 0;
+        }
+
+        massacreText.text = killCount + "x " + massacreTimer.ToString("F2") + "s";
     }
 
     void shakeText()
@@ -107,6 +128,25 @@ public class GameManager : MonoBehaviour
 
     public void UpdateEnemyText()
     {
-        enemyAmount.text = "Enemies left: " + enemies.Count + "!";
+        if(enemyAmount != null)
+            enemyAmount.text = "Enemies left: " + enemies.Count + "!";
+    }
+
+    public void RefreshMassacre()
+    {
+        massacreTimer = massacreTime;
+        killCount++;
+    }
+
+    public void EndGame()
+    {
+        endScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        //endScreen.GetComponent<Animator>().Play()
+    }
+
+    public void Reload()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
