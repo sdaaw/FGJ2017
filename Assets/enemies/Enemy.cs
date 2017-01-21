@@ -43,12 +43,12 @@ public class Enemy : MonoBehaviour
     {
         if(!moving && !waiting)
         {
-            transform.Rotate(transform.rotation.x, Random.Range(0, 360), transform.rotation.z);
+           transform.Rotate(transform.rotation.x, Random.Range(0, 360), transform.rotation.z);
         }
         if (timer < time && !waiting)
         {
             moving = true;
-            transform.Translate(-transform.forward * chillSpeed * Time.deltaTime);
+            m_rb.velocity += transform.forward * chillSpeed * Time.deltaTime;
         }
         else if(timer >= time)
         {
@@ -77,12 +77,14 @@ public class Enemy : MonoBehaviour
                                        m_player.transform.position.z);
 
         transform.LookAt(playerChaseLookat);
-        transform.Translate(-transform.forward * chaseSpeed * Time.deltaTime);
+
+        Vector3 dir = (playerChaseLookat - transform.position).normalized * chaseSpeed;
+        m_rb.velocity = dir;
     }
 
     private enum EnemyStates
     {
         Chill,
-        Chase,          
+        Chase   
     };
 }

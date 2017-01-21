@@ -6,6 +6,7 @@ public class Stats : MonoBehaviour
 {
     public int Health = 0;
     public bool isAlive = true;
+    public int scoreToAdd;
 
     public void TakeDamage(int damage)
     {
@@ -21,7 +22,8 @@ public class Stats : MonoBehaviour
     public void Die()
     {
         //play death anim and wait
-        //dragdol?
+        //dragdol
+        GameManager.AddScore(scoreToAdd);
         Destroy(gameObject);
     }
 
