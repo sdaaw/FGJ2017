@@ -89,7 +89,7 @@ public class WaveManager : MonoBehaviour {
                     {
                         NextWave();
                     }
-                }
+                } 
             }
             else
             {
@@ -124,10 +124,5 @@ public class WaveManager : MonoBehaviour {
             waveTimeCap += 5;
         }
         //GetComponent<PhaseManager>().Shift();
-    }
-
-    void OnWave(int wave)
-    {
-
     }
 }

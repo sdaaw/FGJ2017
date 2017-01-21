@@ -31,7 +31,7 @@ public class PhaseManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         initCamPos = cam.transform.position;
-        sadParticle.Stop();
+        sadParticle.gameObject.SetActive(false);
         player.currentState = PlayerState.Normal;
 
     }
@@ -59,7 +59,7 @@ public class PhaseManager : MonoBehaviour
         {
             cam.clearFlags = CameraClearFlags.Color;
             cam.backgroundColor = Color.black;
-            sadParticle.Play();
+            sadParticle.gameObject.SetActive(true);
 
             if (!shifting)
             {
@@ -75,7 +75,7 @@ public class PhaseManager : MonoBehaviour
                 cam.fieldOfView = 60;
                 dirLight.intensity = 1;
             }
-            sadParticle.Stop();
+            sadParticle.gameObject.SetActive(false);
             cam.clearFlags = CameraClearFlags.Skybox;
         }
 
