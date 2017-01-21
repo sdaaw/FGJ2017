@@ -74,6 +74,7 @@ public class WaveManager : MonoBehaviour {
                 {
                     if(lastWave)
                     {
+                        player.stats.Die();
                         Time.timeScale = 0;
                         timerText.text = "Captured by the police!";
                         waveText.text = "Final score: " + GameManager.Score;
@@ -119,6 +120,7 @@ public class WaveManager : MonoBehaviour {
         }
         else
         {
+            player.stats.Health = player.stats.MaxHealth;
             waveTimer = 0;
             player.currentState = PlayerState.Normal;
             player.UpdateBgSound();
