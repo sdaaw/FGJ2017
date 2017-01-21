@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public List<Enemy> enemies;
 
 
-
     public float massacreTime;
     private float massacreTimer;
     public float killCount;
@@ -26,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameManager = this;
+        Time.timeScale = 1;
     }
 
     public static void AddScore(int scoreToAdd, int multiplier)

@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
         anim.SetFloat("speed", speed);
         if (stats.isAlive)
         {
-            if(m_player != null)
+            if(m_player != null && m_player.isActiveAndEnabled)
             {
                 switch (m_player.currentState)
                 {
@@ -59,6 +59,8 @@ public class Enemy : MonoBehaviour
                         break;
                 }
             }
+            else
+                Chill();
         }
 
         /*if (m_isGrounded && m_yVelocity < 0)
@@ -123,6 +125,7 @@ public class Enemy : MonoBehaviour
             //do melee stuff
             Attack();
         }
+
         if (m_swingTimer >= swingTime + 2)
             m_swingTimer = 0;
         m_swingTimer += Time.deltaTime;

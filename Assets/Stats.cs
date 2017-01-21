@@ -20,23 +20,27 @@ public class Stats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isInvincible || !isAlive)
-            return;
-
-        Health -= damage;
-        if (Health <= 0 && isAlive)
+        if (!isInvincible && isAlive)
         {
-            isAlive = false;
-            Die();
-        }
+            Health -= damage;
+            if (Health <= 0 && isAlive)
+            {
+                isAlive = false;
+                Die();
+            }
+            else
+            {
+                StartCoroutine(invicibleTimer());
+            }
 
-        for(int i = 0; i < bloodParticleAmount; i++)
-        {
-            GameObject a = Instantiate(blood, new Vector3(transform.position.x, transform.position.y, gameObject.transform.position.z), Quaternion.identity);
-            Rigidbody aR = a.GetComponent<Rigidbody>();
-            aR.AddForce(Vector3.forward * 100);
-        }
-        StartCoroutine(invicibleTimer());
+            for (int i = 0; i < bloodParticleAmount; i++)
+            {
+                GameObject a = Instantiate(blood, new Vector3(transform.position.x, transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                Rigidbody aR = a.GetComponent<Rigidbody>();
+                aR.AddForce(Vector3.forward * 100);
+            }
+            
+        }  
     }
 
     public void Die()

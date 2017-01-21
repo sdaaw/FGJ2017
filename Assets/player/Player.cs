@@ -29,6 +29,10 @@ public class Player : MonoBehaviour
 
     public GameObject model;
 
+    private AudioClip chill;
+    private AudioClip insane;
+
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -102,6 +106,18 @@ public class Player : MonoBehaviour
         currentDraggedEnemy.isBeingDragged = false;
         currentDraggedEnemy = null;
         anim.SetBool("dragging", false);
+    }
+
+    public void UpdateBgSound()
+    {
+        if(currentState == PlayerState.Normal)
+        {
+            FindObjectOfType<CameraController>().GetComponent<AudioSource>().clip = chill;
+        }
+        else if(currentState == PlayerState.Sad)
+        {
+            FindObjectOfType<CameraController>().GetComponent<AudioSource>().clip = insane;
+        }
     }
 }
 
