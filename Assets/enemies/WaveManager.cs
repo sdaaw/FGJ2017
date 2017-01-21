@@ -58,6 +58,7 @@ public class WaveManager : MonoBehaviour {
                 player.currentState = PlayerState.Sad;
                 timerText.text = "O BOI NICE MEDS";
                 waveText.text = "Wave: " + currWave.ToString();
+                player.UpdateBgSound();
                 //GetComponent<PhaseManager>().Shift();
             }
             if(player.currentState == PlayerState.Sad)
@@ -119,6 +120,7 @@ public class WaveManager : MonoBehaviour {
         else
         {
             player.currentState = PlayerState.Normal;
+            player.UpdateBgSound();
             currWave = currWave + 1;
             isOnWave = true;
             waveTimeCap += 5;

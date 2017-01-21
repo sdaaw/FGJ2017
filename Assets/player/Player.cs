@@ -29,8 +29,8 @@ public class Player : MonoBehaviour
 
     public GameObject model;
 
-    private AudioClip chill;
-    private AudioClip insane;
+    public AudioClip chill;
+    public AudioClip insane;
 
 
     private void Awake()
@@ -113,10 +113,12 @@ public class Player : MonoBehaviour
         if(currentState == PlayerState.Normal)
         {
             FindObjectOfType<CameraController>().GetComponent<AudioSource>().clip = chill;
+            FindObjectOfType<CameraController>().GetComponent<AudioSource>().Play();
         }
         else if(currentState == PlayerState.Sad)
         {
             FindObjectOfType<CameraController>().GetComponent<AudioSource>().clip = insane;
+            FindObjectOfType<CameraController>().GetComponent<AudioSource>().Play();
         }
     }
 }
