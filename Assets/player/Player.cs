@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody m_rb;
 
+    public GameObject model;
+
     private void Awake()
     {
         movement = GetComponent<Movement>();
@@ -43,8 +45,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
             DoMeleeSwing();
-        else if(Input.GetKeyDown(KeyCode.Mouse0))
-            DoMeleeSwing2();
+        /*else if(Input.GetKeyDown(KeyCode.Mouse0))
+            DoMeleeSwing2();*/
 
         if (Input.GetKeyDown(KeyCode.E) && currentDraggedEnemy == null)
             DragEnemy();
@@ -90,6 +92,8 @@ public class Player : MonoBehaviour
         {
             currentDraggedEnemy = ragdollsNear[0];
             currentDraggedEnemy.isBeingDragged = true;
+            anim.SetBool("dragging", true);
+            anim.CrossFade("drag", 0f);
         }  
     }
 
@@ -97,6 +101,7 @@ public class Player : MonoBehaviour
     {
         currentDraggedEnemy.isBeingDragged = false;
         currentDraggedEnemy = null;
+        anim.SetBool("dragging", false);
     }
 }
 

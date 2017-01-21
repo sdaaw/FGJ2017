@@ -5,22 +5,50 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour 
 {
+    public static GameManager gameManager;
+
     public Text scoreText;
     public Text enemyAmount;
+    public Text massacreText;
 
     public static int Score;
 
     public List<Enemy> enemies;
 
 
-    public static void AddScore(int scoreToAdd)
+
+    public float massacreTime;
+    private float massacreTimer;
+    public float killCount;
+
+    public GameObject endScreen;
+
+    void Start()
+    {
+        gameManager = this;
+    }
+
+    public static void AddScore(int scoreToAdd, int multiplier)
     { 
-        Score += scoreToAdd;
+        Score += scoreToAdd * (multiplier==0 ? 1 : multiplier);
         FindObjectOfType<GameManager>().UpdateScoreText();
     }
 
     void Update()
     {
+        if(massacreTimer > 0)
+        {
+            massacreTimer -= Time.deltaTime;
+            
+        }
+
+        if (massacreTimer < 0)
+        {
+            massacreTimer = 0;
+            killCount = 0;
+        }
+
+        massacreText.text = killCount + "x " + massacreTimer.ToString("F2") + "s";
     }
 
 
@@ -37,6 +65,25 @@ public class GameManager : MonoBehaviour
 
     public void UpdateEnemyText()
     {
-        enemyAmount.text = "Enemies left: " + enemies.Count + "!";
+        if(enemyAmount != null)
+            enemyAmount.text = "Enemies left: " + enemies.Count + "!";
+    }
+
+    public void RefreshMassacre()
+    {
+        massacreTimer = massacreTime;
+        killCount++;
+    }
+
+    public void EndGame()
+    {
+        endScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        //endScreen.GetComponent<Animator>().Play()
+    }
+
+    public void Reload()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

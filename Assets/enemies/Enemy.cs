@@ -47,14 +47,17 @@ public class Enemy : MonoBehaviour
         anim.SetFloat("speed", speed);
         if (stats.isAlive)
         {
-            switch (m_player.currentState)
+            if(m_player != null)
             {
-                case PlayerState.Normal:
-                    Chill();
-                    break;
-                case PlayerState.Sad:
-                    Chase();
-                    break;
+                switch (m_player.currentState)
+                {
+                    case PlayerState.Normal:
+                        Chill();
+                        break;
+                    case PlayerState.Sad:
+                        Chase();
+                        break;
+                }
             }
         }
 

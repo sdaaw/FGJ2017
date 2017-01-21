@@ -25,6 +25,8 @@ public class CameraController : MonoBehaviour
 
     public float followSpeed;
 
+    public LayerMask lm;
+
     private void Awake()
     {
         m_transform = transform;
@@ -65,7 +67,7 @@ public class CameraController : MonoBehaviour
             playerTransform.localEulerAngles = new Vector3(playerTransform.localEulerAngles.x, m_transform.localEulerAngles.y, playerTransform.localEulerAngles.z);
 
         RaycastHit hit;
-        if (Physics.Raycast(playerTransform.position, (m_transform.position - playerTransform.position).normalized, out hit, (distance <= 0 ? -distance : distance)))
+        if (Physics.Raycast(playerTransform.position, (m_transform.position - playerTransform.position).normalized, out hit, (distance <= 0 ? -distance : distance), lm))
         {
             m_transform.position = hit.point - (m_transform.position - hit.point).normalized * 1.2f;
         }
