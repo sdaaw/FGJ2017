@@ -12,6 +12,8 @@ public class WaveManager : MonoBehaviour {
 
     private float waveTimer;
     public float waveTimeCap;
+    public float spookyTimerCap;
+    private float spookyTimer;
 
     public bool isOnPause;
     public bool lastWave = false;
@@ -28,6 +30,7 @@ public class WaveManager : MonoBehaviour {
     public float spawnTime = 0;
 
     public Enemy enemyPrefab;
+    public Enemy spookyPrefab;
     public List<Transform> spawnPoints;
 
     private GameManager gm;
@@ -61,7 +64,16 @@ public class WaveManager : MonoBehaviour {
             }
             if(player.currentState == PlayerState.Sad)
             {
-
+                spookyTimer += 1 * Time.deltaTime;
+                if(spookyTimer > spookyTimerCap)
+                {
+                    Vector3 offsetPos = new Vector3(spawnPoints[Random.Range(0, spawnPoints.Count)].position.x + Random.Range(-10, 10),
+                    spawnPoints[Random.Range(0, spawnPoints.Count)].position.y,
+                    spawnPoints[Random.Range(0, spawnPoints.Count)].position.z + Random.Range(-10, 10));
+                    GameObject.Instantiate(spookyPrefab, offsetPos, Quaternion.identity);
+                    //FindObjectOfType<GameManager>().UpdateEnemyText();
+                    spookyTimer = 0;
+                }
                 sinCurve.howSadAreYou = 2f;
                 sinCurve.speed = 20f;
                 waveTimer += 1 * Time.deltaTime;
