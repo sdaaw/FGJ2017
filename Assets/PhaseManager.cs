@@ -26,6 +26,10 @@ public class PhaseManager : MonoBehaviour
 
     private bool shifting = false;
 
+    public Material chillsb;
+    public Material insanesb;
+
+
     // Use this for initialization
     void Start()
     {
@@ -57,8 +61,9 @@ public class PhaseManager : MonoBehaviour
         }
         if(player.currentState == PlayerState.Sad)
         {
-            cam.clearFlags = CameraClearFlags.Color;
-            cam.backgroundColor = Color.black;
+            RenderSettings.skybox = insanesb;
+            //cam.clearFlags = CameraClearFlags.Color;
+            //cam.backgroundColor = Color.black;
             sadParticle.gameObject.SetActive(true);
 
             if (!shifting)
@@ -76,7 +81,8 @@ public class PhaseManager : MonoBehaviour
                 dirLight.intensity = 1;
             }
             sadParticle.gameObject.SetActive(false);
-            cam.clearFlags = CameraClearFlags.Skybox;
+            //cam.clearFlags = CameraClearFlags.Skybox;
+            RenderSettings.skybox = chillsb;
         }
 
     }
