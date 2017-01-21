@@ -135,6 +135,7 @@ public class Enemy : MonoBehaviour
     {
         if(m_swingTimer >= swingTime)
         {
+            anim.SetTrigger("attack");
             m_swingTimer = 0;
             m_player.stats.TakeDamage(dmg);
         }

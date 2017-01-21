@@ -39,7 +39,8 @@ public class Stats : MonoBehaviour
                 Rigidbody aR = a.GetComponent<Rigidbody>();
                 aR.AddForce(Vector3.forward * 100);
             }
-            
+            SoundManager.PlayASource("blood");
+
         }  
     }
 

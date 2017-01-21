@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         if (!isPerformingAction && currentState == PlayerState.Sad)
         {
             anim.SetTrigger("melee1");
+            SoundManager.PlayASource("attack");
             StartCoroutine(MeleeTimer(meleeTime));
         }
     }
