@@ -1,0 +1,34 @@
+Samppa
+
+Gui Grafikka
+vuori parannus
+päähahmo teksturi polish
+Lisää random malleja
+blood splatter
+
+Mikko
+
+viuhasu ääni kun lyö
+Crediiti main menuu
+Gameplay video
+Lisää random malleja			Merilevää, Beach pallo (Ragdoll), meritähti
+Lokit alku scenee
+Creditit musa ja sound
+
+
+Koodaajat
+
+rage modi tulee fogi
+Valkonen välähys aina kun modi vaihtuu
+Vihollisten teksturi vaihtuu (lippis dude)
+Vaiha melan materiaali
+Normi modis ei skeletoneja
+ragemodis lippispää vaihtuu mustavalkosee tekstuurii
+Tutoriaalin jälkee menee sceneen!!!
+lyö aurinko suojia = rigidbody
+
+
+Animoida skyboxin pyörii hitaast
+Tikisuihdut liekit rage modis
+Wave vaihtuu pieni animaatio
+Vihollinen raahataa vetee partikkeli efeckti + ääni
