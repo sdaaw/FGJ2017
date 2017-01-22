@@ -8,12 +8,12 @@ blood splatter
 
 Mikko
 
-viuhasu ääni kun lyö
-Crediiti main menuu
+viuhasu ääni kun lyö		DONE
+Crediiti main menuu		DONE
 Gameplay video
 Lisää random malleja			Merilevää, Beach pallo (Ragdoll), meritähti
 Lokit alku scenee
-Creditit musa ja sound
+Creditit musa ja sound   	DONE
 
 
 Koodaajat
@@ -26,6 +26,7 @@ Normi modis ei skeletoneja
 ragemodis lippispää vaihtuu mustavalkosee tekstuurii
 Tutoriaalin jälkee menee sceneen!!!
 lyö aurinko suojia = rigidbody
+Main menu credits valikko fix kysy mikolt.
 
 
 Animoida skyboxin pyörii hitaast
