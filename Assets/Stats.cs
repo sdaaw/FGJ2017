@@ -14,7 +14,8 @@ public class Stats : MonoBehaviour
 
     public float shakeValue;
 
-    public int bloodParticleAmount = 35;
+    public int bloodPerSpawn = 35;
+    public int maxBlood = 300;
 
     public bool isInvincible;
     public float invTime;
@@ -36,7 +37,7 @@ public class Stats : MonoBehaviour
                 StartCoroutine(invicibleTimer());
             }
 
-            for (int i = 0; i < bloodParticleAmount; i++)
+            for (int i = 0; i < bloodPerSpawn; i++)
             {
                 GameObject a = Instantiate(blood, new Vector3(transform.position.x, transform.position.y, gameObject.transform.position.z), Quaternion.identity);
                 Rigidbody aR = a.GetComponent<Rigidbody>();
@@ -65,7 +66,7 @@ public class Stats : MonoBehaviour
             rRot = Quaternion.Euler(-90, blöd.transform.rotation.y, Random.Range(0, 360));
 
             GameObject g = GameObject.Instantiate(blöd, transform.position - transform.up * 0.97f, rRot) as GameObject;
-            g.transform.localScale = new Vector3(Random.Range(2f, 4f), Random.Range(2f, 4f), 1);
+            g.transform.localScale = new Vector3(Random.Range(2f, 6f), Random.Range(2f, 6f), 1);
 
 
             GetComponent<Enemy>().model.SetActive(false);

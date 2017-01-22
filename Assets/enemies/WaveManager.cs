@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour {
             if (Input.GetKeyUp(KeyCode.F))
             {
                 player.currentState = PlayerState.Sad;
-                timerText.text = "O BOI NICE MEDS";
+                //timerText.text = "O BOI NICE MEDS";
                 waveText.text = "Wave: " + currWave.ToString();
                 player.UpdateBgSound();
             }
@@ -88,7 +88,7 @@ public class WaveManager : MonoBehaviour {
                     {
                         player.stats.Die();
                         Time.timeScale = 0;
-                        timerText.text = "Captured by the police!";
+                        timerText.text = "Game over!";
                         waveText.text = "Final score: " + GameManager.Score;
                     }
                     else
@@ -99,7 +99,7 @@ public class WaveManager : MonoBehaviour {
             }
             else
             {
-                timerText.text = "Press 'F' to toggle sad mode!";
+                timerText.text = "Press 'F' to toggle rampage!";
                 sinCurve.howSadAreYou = 5f;
                 sinCurve.speed = 2f;
             }
@@ -122,12 +122,19 @@ public class WaveManager : MonoBehaviour {
 
     void NextWave()
     {
-        if(gm.enemies.Count > 0)
+        List<Enemy> nonSpookyEnemies = new List<Enemy>();
+        for(int i = 0; i < gm.enemies.Count; i++)
+        {
+            if (gm.enemies[i].tag != "spooky")
+                nonSpookyEnemies.Add(gm.enemies[i]);
+        }
+
+        if(nonSpookyEnemies.Count > 0)
         {
             waveTimer = 0;
             waveTimeCap = 30;
             lastWave = true;
-            timerText.text = "You left a witness, police is on the way!";
+            timerText.text = "You didn't clear wave in time!";
             waveText.text = "Final rampage: " + waveTimer + "/" + waveTimeCap;
         }
         else
