@@ -19,43 +19,36 @@ Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\Hawa
 Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
 Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-- Completed reload, in  0.051 seconds
+- Completed reload, in  0.023 seconds
 Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.951149 ms
+UnloadTime: 2.102073 ms
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.894703 ms
+UnloadTime: 1.852444 ms
 
 Unloading 140 unused Assets to reduce memory usage. Loaded Objects now: 1793.
-Total: 0.570795 ms (FindLiveObjects: 0.106854 ms CreateObjectMapping: 0.037731 ms MarkObjects: 0.159677 ms  DeleteObjects: 0.265928 ms)
+Total: 0.975272 ms (FindLiveObjects: 0.118324 ms CreateObjectMapping: 0.074858 ms MarkObjects: 0.300037 ms  DeleteObjects: 0.481448 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.712362 ms
+UnloadTime: 1.326926 ms
 
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2723.
-Total: 2.906198 ms (FindLiveObjects: 0.123456 ms CreateObjectMapping: 0.067010 ms MarkObjects: 0.366444 ms  DeleteObjects: 2.348382 ms)
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2719.
+Total: 3.270227 ms (FindLiveObjects: 0.113495 ms CreateObjectMapping: 0.038938 ms MarkObjects: 0.425606 ms  DeleteObjects: 2.691584 ms)
 
 ????
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-????
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 35.239014 ms
-
-Unloading 62 unused Assets to reduce memory usage. Loaded Objects now: 2727.
-Total: 0.665878 ms (FindLiveObjects: 0.125870 ms CreateObjectMapping: 0.043164 ms MarkObjects: 0.378820 ms  DeleteObjects: 0.116815 ms)
 
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.549087 ms
+UnloadTime: 7.754188 ms
 
-Unloading 255 unused Assets to reduce memory usage. Loaded Objects now: 1145.
-Total: 0.831592 ms (FindLiveObjects: 0.082706 ms CreateObjectMapping: 0.050710 ms MarkObjects: 0.213105 ms  DeleteObjects: 0.484467 ms)
+Unloading 368 unused Assets to reduce memory usage. Loaded Objects now: 1042.
+Total: 5.650002 ms (FindLiveObjects: 0.083612 ms CreateObjectMapping: 0.089045 ms MarkObjects: 0.410815 ms  DeleteObjects: 5.065925 ms)
 
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1d9c -> priority: 1 
+  Thread -> id: a7c -> priority: 1 
