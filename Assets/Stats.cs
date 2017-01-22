@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    private GameManager m_gm;
     public int Health = 0;
     public int MaxHealth = 0;
     public bool isAlive = true;
@@ -14,8 +15,7 @@ public class Stats : MonoBehaviour
 
     public float shakeValue;
 
-    public int bloodPerSpawn = 35;
-    public int maxBlood = 300;
+    public int bloodPerSpawn = 30;
 
     public bool isInvincible;
     public float invTime;
@@ -43,7 +43,10 @@ public class Stats : MonoBehaviour
                 Rigidbody aR = a.GetComponent<Rigidbody>();
                 a.GetComponent<destroyTimer>().time = Random.Range(15, 40);
                 aR.AddForce(Vector3.forward * 100);
+                m_gm.blöds.Add(a);
             }
+
+            m_gm.CheckBlood(bloodPerSpawn);
             SoundManager.PlayASource("blood");
 
         }  
@@ -71,7 +74,9 @@ public class Stats : MonoBehaviour
 
             GetComponent<Enemy>().model.SetActive(false);
             //GetComponent<Enemy>().ragdoll.SetActive(true);
-            GameObject.Instantiate(GetComponent<Enemy>().ragdoll, transform.position, transform.rotation);
+            GameObject ragdoll = GameObject.Instantiate(GetComponent<Enemy>().ragdoll, transform.position, transform.rotation) as GameObject;
+            if(tag != "spooky")
+                ragdoll.GetComponentInChildren<Renderer>().material.mainTexture = m_gm.GetComponent<WaveManager>().textures[GetComponent<Enemy>().textureN];
             FindObjectOfType<GameManager>().RefreshMassacre();
             Destroy(gameObject);
         }
@@ -87,11 +92,7 @@ public class Stats : MonoBehaviour
 
     private void Awake()
     {
-    }
-
-    private void FixedUpdate()
-    {
-
+        m_gm = FindObjectOfType<GameManager>();
     }
 
     IEnumerator invicibleTimer()

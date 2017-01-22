@@ -20,10 +20,6 @@ Koodaajat
 
 rage modi tulee fogi
 Valkonen välähys aina kun modi vaihtuu
-Vihollisten teksturi vaihtuu (lippis dude)
-Vaiha melan materiaali
-Normi modis ei skeletoneja
-ragemodis lippispää vaihtuu mustavalkosee tekstuurii
 Tutoriaalin jälkee menee sceneen!!!
 lyö aurinko suojia = rigidbody
 

@@ -25,11 +25,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameManager = this;
+        Score = 0;
         Time.timeScale = 1;
     }
 
     public static void AddScore(int scoreToAdd, int multiplier)
-    { 
+    {
         Score += scoreToAdd * (multiplier==0 ? 1 : multiplier);
         FindObjectOfType<GameManager>().UpdateScoreText();
     }
@@ -51,10 +52,26 @@ public class GameManager : MonoBehaviour
         massacreText.text = killCount + "x " + massacreTimer.ToString("F2") + "s";
     }
 
+    public List<GameObject> blöds;
+    public int maxBlood = 300;
+
+    public void CheckBlood(float bloodPerSpawn)
+    {
+        if (blöds.Count > maxBlood)
+        {
+            for (int j = 0; j < bloodPerSpawn; j++)
+            {
+                GameObject b = blöds[j];
+                blöds.Remove(b);
+                b.GetComponent<destroyTimer>().StartDestroyTimer(Random.Range(1, 6));
+            }
+        }
+    }
+
 
     private void Awake()
     {
-        scoreText.text = "Score: 0 :^(";
+        scoreText.text = "Score: 0 :(";
         UpdateEnemyText();
     }
 

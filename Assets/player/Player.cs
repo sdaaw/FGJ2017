@@ -48,7 +48,13 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+            if(!isPerformingAction && currentState == PlayerState.Sad)
+                SoundManager.PlayASource("swoosh");
             DoMeleeSwing();
+        }
+            
         /*else if(Input.GetKeyDown(KeyCode.Mouse0))
             DoMeleeSwing2();*/
 

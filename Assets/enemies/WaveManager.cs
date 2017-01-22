@@ -31,6 +31,9 @@ public class WaveManager : MonoBehaviour {
 
     public Enemy enemyPrefab;
     public Enemy spookyPrefab;
+
+    public List<Texture> textures;
+
     public List<Transform> spawnPoints;
 
     private GameManager gm;
@@ -73,6 +76,7 @@ public class WaveManager : MonoBehaviour {
                     GameObject.Instantiate(spookyPrefab, offsetPos, Quaternion.identity);
                     //FindObjectOfType<GameManager>().UpdateEnemyText();
                     spookyTimer = 0;
+                    spookyTimerCap = Random.Range(2, 5);
                 }
                 sinCurve.howSadAreYou = 2f;
                 sinCurve.speed = 20f;
@@ -115,8 +119,11 @@ public class WaveManager : MonoBehaviour {
                 spawnPoints[Random.Range(0, spawnPoints.Count)].position.z + Random.Range(-10, 10));
 
 
-            GameObject.Instantiate(enemyPrefab, offsetPos, Quaternion.identity);
+            Enemy g = GameObject.Instantiate(enemyPrefab, offsetPos, Quaternion.identity);
+            g.textureN = Random.Range(0, textures.Count);
+            g.GetComponent<Enemy>().model.transform.GetChild(1).GetComponent<Renderer>().material.mainTexture = textures[g.textureN];
             FindObjectOfType<GameManager>().UpdateEnemyText();
+            
         }
     }
 
@@ -145,7 +152,8 @@ public class WaveManager : MonoBehaviour {
             player.UpdateBgSound();
             currWave = currWave + 1;
             isOnWave = true;
-            waveTimeCap += 5;
+            if(waveTimeCap <= 30)
+                waveTimeCap += 5;
             waveEnemyCount += 3;
             SpawnEnemy();
         }

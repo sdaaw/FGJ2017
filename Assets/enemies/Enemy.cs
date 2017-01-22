@@ -26,6 +26,10 @@ public class Enemy : MonoBehaviour
     public float speed;
     public Animator anim;
 
+    public int textureN;
+
+    public Texture sadTexture;
+
 
 	private void Awake ()
     {
@@ -116,6 +120,7 @@ public class Enemy : MonoBehaviour
 
     private void Chase()
     {
+        m_swingTimer += Time.deltaTime;
         m_rb.AddForce(Vector3.down * 50);
         playerChaseLookat = new Vector3(m_player.transform.position.x,
                                        transform.position.y,
@@ -132,7 +137,7 @@ public class Enemy : MonoBehaviour
             Attack();
         }
 
-        if (m_swingTimer >= swingTime + 2)
+        if (m_swingTimer >= swingTime + Random.Range(1f, 2f))
             m_swingTimer = 0;
     }
 
@@ -140,7 +145,8 @@ public class Enemy : MonoBehaviour
     {
         if(m_swingTimer >= swingTime)
         {
-            anim.SetTrigger("attack");
+            if(tag == "spooky")
+                anim.SetTrigger("attack");
             m_swingTimer = 0;
             m_player.stats.TakeDamage(dmg);
         }

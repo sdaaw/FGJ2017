@@ -39,7 +39,7 @@ public class weapon : MonoBehaviour
     IEnumerator WaitForHitSound()
     {
         audioPlaying = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.25f);
         audioPlaying = false;
     }
 }

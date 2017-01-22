@@ -61,7 +61,8 @@ public class PhaseManager : MonoBehaviour
         }
         if(player.currentState == PlayerState.Sad)
         {
-            RenderSettings.skybox = insanesb;
+            if(RenderSettings.skybox != insanesb)
+                RenderSettings.skybox = insanesb;
             //cam.clearFlags = CameraClearFlags.Color;
             //cam.backgroundColor = Color.black;
             sadParticle.gameObject.SetActive(true);
@@ -71,6 +72,14 @@ public class PhaseManager : MonoBehaviour
                 cam.fieldOfView = 60;
                 ShakeCamera();
                 //dirLight.intensity = 0;
+
+                Enemy[] enemies = FindObjectsOfType<Enemy>();
+                for (int i = 0; i < enemies.Length; i++)
+                {
+                    if (enemies[i].tag != "spooky")
+                        enemies[i].model.transform.GetChild(1).GetComponent<Renderer>().material.mainTexture = enemies[i].sadTexture;
+                }
+
             }
         }
         else if(player.currentState == PlayerState.Normal)
@@ -79,10 +88,23 @@ public class PhaseManager : MonoBehaviour
             {
                 cam.fieldOfView = 60;
                 dirLight.intensity = 1;
+                List<GameObject> spooks = new List<GameObject>();
+                Enemy[] enemies = FindObjectsOfType<Enemy>();
+                for(int i = 0; i < enemies.Length; i++)
+                {
+                    if (enemies[i].tag == "spooky")
+                        spooks.Add(enemies[i].gameObject);
+                }
+
+                for(int i = 0; i < spooks.Count; i++)
+                {
+                    Destroy(spooks[i]);
+                }
             }
             sadParticle.gameObject.SetActive(false);
             //cam.clearFlags = CameraClearFlags.Skybox;
-            RenderSettings.skybox = chillsb;
+            if (RenderSettings.skybox != chillsb)
+                RenderSettings.skybox = chillsb;
         }
 
     }
