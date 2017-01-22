@@ -17,6 +17,9 @@ public class WaveManager : MonoBehaviour {
 
     public bool isOnPause;
     public bool lastWave = false;
+    private bool isFlashing = false;
+    private float flashValue;
+    public GameObject flashQuad;
 
     public Text waveText;
     public Text timerText;
@@ -49,6 +52,7 @@ public class WaveManager : MonoBehaviour {
         sinCurve = FindObjectOfType<SinTest>();
         isOnWave = true;
         currWave = 1;
+        flashQuad.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0f);
     }
 	
 	// Update is called once per frame
@@ -63,6 +67,7 @@ public class WaveManager : MonoBehaviour {
                 player.currentState = PlayerState.Sad;
                 //timerText.text = "O BOI NICE MEDS";
                 waveText.text = "Wave: " + currWave.ToString();
+                StartCoroutine("Flash", 0.05f);
                 player.UpdateBgSound();
             }
             if(player.currentState == PlayerState.Sad)
@@ -125,6 +130,18 @@ public class WaveManager : MonoBehaviour {
             FindObjectOfType<GameManager>().UpdateEnemyText();
             
         }
+    }
+
+    IEnumerator Flash(float waitTime)
+    {
+        Debug.Log("????");
+        isFlashing = true;
+        flashValue += 0.001f;
+        flashQuad.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1f);
+        yield return new WaitForSeconds(waitTime);
+        flashValue -= 0.001f;
+        flashQuad.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0f);
+        isFlashing = false;
     }
 
     void NextWave()
