@@ -1,17 +1,17 @@
 Samppa
 
-Gui Grafikka
-vuori parannus
-p‰‰hahmo teksturi polish
-Lis‰‰ random malleja
+Gui Grafikka      DONE
+vuori parannus      DONE
+p√§√§hahmo teksturi polish
+Lis√§√§ random malleja
 blood splatter
 
 Mikko
 
-viuhasu ‰‰ni kun lyˆ		DONE
+viuhasu √§√§ni kun ly√∂		DONE
 Crediiti main menuu		DONE
 Gameplay video
-Lis‰‰ random malleja			Merilev‰‰, Beach pallo (Ragdoll), merit‰hti
+Lis√§√§ random malleja			Merilev√§√§, Beach pallo (Ragdoll), merit√§hti
 Lokit alku scenee
 Creditit musa ja sound   	DONE
 
@@ -19,12 +19,12 @@ Creditit musa ja sound   	DONE
 Koodaajat
 
 rage modi tulee fogi
-Valkonen v‰l‰hys aina kun modi vaihtuu
-Tutoriaalin j‰lkee menee sceneen!!!
-lyˆ aurinko suojia = rigidbody
+Valkonen v√§l√§hys aina kun modi vaihtuu
+Tutoriaalin j√§lkee menee sceneen!!!
+ly√∂ aurinko suojia = rigidbody
 
 
-Animoida skyboxin pyˆrii hitaast
+Animoida skyboxin py√∂rii hitaast
 Tikisuihdut liekit rage modis
 Wave vaihtuu pieni animaatio
-Vihollinen raahataa vetee partikkeli efeckti + ‰‰ni
+Vihollinen raahataa vetee partikkeli efeckti + √§√§ni
