@@ -13,6 +13,7 @@ public class menu : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.None;
         start.SetActive(true);
         controls.SetActive(false);
         hasPlayedStartAnim = true;
@@ -40,5 +41,19 @@ public class menu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    private void Update()
+    {
+        // atte haista vittu tää on iha hyvä xD
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Animator[] anims = FindObjectsOfType<Animator>();
+            foreach(Animator a in anims)
+            {
+                if (a.name != "MainCharacter")
+                    a.speed = 100f;
+            }
+        }
     }
 }

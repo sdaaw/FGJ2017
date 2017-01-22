@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
         }
 
         massacreText.text = killCount + "x " + massacreTimer.ToString("F2") + "s";
+
+        if (Input.GetKey(KeyCode.Escape))
+            Application.LoadLevel(0);
     }
 
     public List<GameObject> blöds;

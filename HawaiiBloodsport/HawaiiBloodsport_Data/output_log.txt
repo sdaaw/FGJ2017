@@ -1,0 +1,61 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 630 (ID=0xfc2)
+    Vendor:   NVIDIA
+    VRAM:     1989 MB
+    Driver:   10.18.13.6472
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.051 seconds
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Marin.Marin-PC\Desktop\FGJ2017\HawaiiBloodsport\HawaiiBloodsport_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x1080 at -1920,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.951149 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.894703 ms
+
+Unloading 140 unused Assets to reduce memory usage. Loaded Objects now: 1793.
+Total: 0.570795 ms (FindLiveObjects: 0.106854 ms CreateObjectMapping: 0.037731 ms MarkObjects: 0.159677 ms  DeleteObjects: 0.265928 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.712362 ms
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2723.
+Total: 2.906198 ms (FindLiveObjects: 0.123456 ms CreateObjectMapping: 0.067010 ms MarkObjects: 0.366444 ms  DeleteObjects: 2.348382 ms)
+
+????
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+????
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 35.239014 ms
+
+Unloading 62 unused Assets to reduce memory usage. Loaded Objects now: 2727.
+Total: 0.665878 ms (FindLiveObjects: 0.125870 ms CreateObjectMapping: 0.043164 ms MarkObjects: 0.378820 ms  DeleteObjects: 0.116815 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.549087 ms
+
+Unloading 255 unused Assets to reduce memory usage. Loaded Objects now: 1145.
+Total: 0.831592 ms (FindLiveObjects: 0.082706 ms CreateObjectMapping: 0.050710 ms MarkObjects: 0.213105 ms  DeleteObjects: 0.484467 ms)
+
