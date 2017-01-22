@@ -3,8 +3,8 @@ Samppa
 Gui Grafikka      DONE
 vuori parannus      DONE
 päähahmo teksturi polish
-Lisää random malleja
-blood splatter
+Lisää random malleja    
+blood splatter      DONE
 
 Mikko
 
