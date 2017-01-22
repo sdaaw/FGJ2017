@@ -141,7 +141,7 @@ public class WaveManager : MonoBehaviour {
             waveTimer = 0;
             waveTimeCap = 30;
             lastWave = true;
-            timerText.text = "You didn't clear wave in time!";
+            timerText.text = "You didn't clear the wave in time!";
             waveText.text = "Final rampage: " + waveTimer + "/" + waveTimeCap;
         }
         else
