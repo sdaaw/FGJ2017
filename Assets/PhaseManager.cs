@@ -65,6 +65,7 @@ public class PhaseManager : MonoBehaviour
             {
                 cam.fieldOfView = 60;
                 ShakeCamera();
+                FindObjectOfType<Camera>().GetComponent<GridEffect>().GridColor = new Color32(225, 0, 255, 0);
                 //dirLight.intensity = 0;
 
                 Enemy[] enemies = FindObjectsOfType<Enemy>();
@@ -82,6 +83,8 @@ public class PhaseManager : MonoBehaviour
             {
                 cam.fieldOfView = 60;
                 dirLight.intensity = 1;
+                FindObjectOfType<Camera>().GetComponent<GridEffect>().GridColor = new Color(0, 0, 0, 0);
+
                 List<GameObject> spooks = new List<GameObject>();
                 Enemy[] enemies = FindObjectsOfType<Enemy>();
                 for(int i = 0; i < enemies.Length; i++)

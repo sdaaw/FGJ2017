@@ -71,19 +71,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        scoreText.text = "Score: 0 :(";
+        scoreText.text = 0 + " :(";
         UpdateEnemyText();
     }
 
     public void UpdateScoreText()
     {
-        scoreText.text = "Score: " + Score + "!!";
+        scoreText.text = Score + "!!";
     }
 
     public void UpdateEnemyText()
     {
         if(enemyAmount != null)
-            enemyAmount.text = "Enemies left: " + enemies.Count + "!";
+            enemyAmount.text = enemies.Count + "!";
     }
 
     public void RefreshMassacre()
