@@ -4,6 +4,7 @@ Gui Grafikka
 vuori parannus
 p‰‰hahmo teksturi polish
 Lis‰‰ random malleja
+blood splatter
 
 Mikko
 
